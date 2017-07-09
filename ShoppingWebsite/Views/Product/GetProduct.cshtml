@@ -1,0 +1,78 @@
+﻿@model List<ShoppingWebsite.Models.ProductModel>
+@{
+    ViewBag.Title = @ViewBag.CName + "- Khareedo.pk";
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+}
+
+<!--start-breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <ol class="breadcrumb">
+                <li><a href="~/Home/Index">Home</a></li>
+                <li class="active">@ViewBag.CName </li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--end-breadcrumbs-->
+<!--prdt-starts-->
+<div class="prdt">
+    <div class="container">
+        <div class="prdt-top">
+            <div class="col-md-9 prdt-left">
+                
+                        @for (int j = 0; j < Model.Count; j = j + 3)
+                        {
+                            <div class="product-one">
+                                @for (int i = 0; i < 3; i++)
+                                {
+
+                                    <div class="col-md-4 product-left p-left">
+                                        <div class="product-main simpleCart_shelfItem">
+                                            <a href="~/Product/Single/@Model[j + i].ProductID" class="mask"><img style="height:250px ; width:250px;" class="img-responsive zoom-img" src="~/Images/@Model[j + i].PictureName" alt="" /></a>
+                                            <div class="product-bottom">
+                                                <h3>@Model[j + i].Name</h3>
+                                                <p>@Model[j + i].Description</p>
+                                                <h4><span class=" item_price">Rs. @Model[j + i].Price</span></h4>
+                                                
+                                            </div>
+                                            <div class="srch srch1">
+                                                <span>New</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                   
+                                }
+
+                          
+                                <div class="clearfix"></div>
+                            </div>
+                 }
+
+
+            
+
+             </div>
+    
+            <div class="col-md-3 prdt-right">
+                <div class="w_sidebar">
+                    <section class="sky-form">
+                        <h4>Advertisement</h4>
+                        <img style="height:300px; width:250px;" src="~/images/ad-1.jpg" />
+                        
+                    </section>
+
+                    <section class="sky-form">
+                        <h4>Advertisement</h4>
+                        <img style="height:300px; width:250px;" src="~/images/ad-1.jpg" />
+
+                    </section>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--product-end-->

@@ -1,0 +1,46 @@
+﻿@model List<ShoppingWebsite.Models.ProductModel>
+@{
+    ViewBag.Title = "Home - Admin";
+    Layout = "~/Views/Shared/_PrivateLayout.cshtml";
+}
+<br>
+<h2>Welcome</h2>
+@Html.ActionLink("Add New Product", "New", "Product")
+<p style="color:red">@TempData["Msg"]</p>
+<div><h3>Product's Detail</h3></div>
+<table class="table">
+    <tr>
+        <th>Product ID</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th></th>
+
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.ProductID</td>
+            <td>
+                @if (@product.PictureName != "")
+                {
+                    <img src="~/Images/@product.PictureName" style="width:100px; height:100px;" />
+                }
+                else
+                {
+                    <img src="~/Images/dummy.jpg" style="width:100px; height:100px;" />
+                }
+            </td>
+            <td>@product.Name</td>
+            <td>@product.Description</td>
+            <td>Rs. @product.Price</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Product", new { @id = product.ProductID }, null) |
+                @Html.ActionLink("Delete", "Delete", "Product", new { @id = product.ProductID }, null) |
+                @Html.ActionLink("Details", "Detail", "Product", new { @id = product.ProductID }, null)
+            </td>
+    </tr>
+    }
+
+</table>

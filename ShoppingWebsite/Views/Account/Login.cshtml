@@ -1,0 +1,55 @@
+﻿@model ShoppingWebsite.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+}
+<!--start-breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="breadcrumbs-main">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Account</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!--end-breadcrumbs-->
+<!--account-starts-->
+<div class="account">
+    <div class="container">
+        <div class="account-top heading">
+            <h2>ACCOUNT</h2>
+        </div>
+        <div class="account-main">
+            <div class="col-md-6 account-left">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken();
+                    <h3>Existing User</h3>
+                    <p style="color:red">@TempData["Msg"]</p>
+                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="account-bottom">
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        <input placeholder="Email" type="text" name="Email" tabindex="3" value="@Model.Email" required>
+                        
+                        <input placeholder="Password" type="password" name="Password" tabindex="4" required>
+                        <div class="address">
+                            <a class="forgot" href="#">Forgot Your Password?</a>
+                            <input type="submit" value="Login">
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-6 account-right account-left">
+                <h3>New User? Create an Account</h3>
+                <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                <a href="~/Account/Register">Create an Account</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!--account-end-->
+
+

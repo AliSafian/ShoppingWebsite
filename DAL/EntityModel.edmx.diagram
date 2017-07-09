@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4ad0f402e274ceb90f4e2a5243cbb97" Name="Diagram1">
+        <EntityTypeShape EntityType="ShoppingWebsiteModel.Cart" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingWebsiteModel.CartItem" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingWebsiteModel.Category" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingWebsiteModel.Payment" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingWebsiteModel.Product" Width="1.5" PointX="3.25" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="ShoppingWebsiteModel.FK_CartItem_Cart" />
+        <AssociationConnector Association="ShoppingWebsiteModel.FK_Payment_Cart" />
+        <AssociationConnector Association="ShoppingWebsiteModel.FK_CartItem_Products" />
+        <AssociationConnector Association="ShoppingWebsiteModel.FK_Products_Category" />
+        <EntityTypeShape EntityType="ShoppingWebsiteModel.Userss" Width="1.5" PointX="8.125" PointY="0.875" />
+        <AssociationConnector Association="ShoppingWebsiteModel.FK_Payment_Userss" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

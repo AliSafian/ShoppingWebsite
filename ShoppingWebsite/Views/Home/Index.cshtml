@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Home - Khareedo.pk";
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+}
+
+<!--banner-starts-->
+<div class="bnr" id="home">
+    <div id="top" class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li>
+                <img src="~/images/bnr-1.jpg" alt="" />
+            </li>
+            <li>
+                <img src="~/images/bnr-2.jpg" alt="" />
+            </li>
+            <li>
+                <img src="~/images/bnr-3.jpg" alt="" />
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!--banner-ends-->
+<!--Slider-Starts-Here-->
+<script src="~/js/responsiveslides.min.js"></script>
+<script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+        // Slideshow 4
+        $("#slider4").responsiveSlides({
+            auto: true,
+            pager: true,
+            nav: true,
+            speed: 500,
+            namespace: "callbacks",
+            before: function () {
+                $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () {
+                $('.events').append("<li>after event fired.</li>");
+            }
+        });
+
+    });
+</script>
+<!--End-slider-script-->
+<!--about-starts-->
+<div class="about">
+    <div class="container">
+        <div class="about-top grid-1">
+            <div class="col-md-4 about-left">
+                <figure class="effect-bubba">
+                    <img class="img-responsive" src="~/images/abt-1.jpg" alt="" />
+                    <figcaption>
+                        <h2>Khareedo Watch</h2>
+                        <p>Designed for performance. Engineered for elegance.</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 about-left">
+                <figure class="effect-bubba">
+                    <img class="img-responsive" src="~/images/abt-2.jpg" alt="" />
+                    <figcaption>
+                        <h4>Khareedo Glasses</h4>
+                        <p>Keep Calm and Wear Shades.</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="col-md-4 about-left">
+                <figure class="effect-bubba">
+                    <img class="img-responsive" src="~/images/abt-3.jpg" alt="" />
+                    <figcaption>
+                        <h4>Khareedo Kapre</h4>
+                        <p>Wear Your Own Style. Build Personality.</p>
+                    </figcaption>
+                </figure>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

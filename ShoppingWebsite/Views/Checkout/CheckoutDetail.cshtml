@@ -1,0 +1,98 @@
+﻿@model ShoppingWebsite.Models.CheckoutModel
+
+@{
+    ViewBag.Title = "CheckoutDetail";
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+}
+<center>
+    <div style="max-width:700px; border:groove ; align-content:flex-start">
+        <div>
+            @Html.ActionLink("Back to Home", "Index", "Home")<br/>
+            <span style="color:red">@TempData["Msg"]</span>
+            <hr/>
+            <h4>Customer Detail</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.UserID)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.UserID)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Mobile)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Mobile)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address)
+                </dd>
+            </dl>
+            <hr />
+            <h4>Product's Detail</h4>
+            <hr />
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Payable)
+                </dt>
+
+                <dd>
+                   Rs. @Html.DisplayFor(model => model.Payable)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PaymentType)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PaymentType)
+                </dd>
+
+            </dl>
+        </div>
+
+        <table class="table">
+            <tr>
+                <th style="width:100px">Product Code</th>
+                <th style ="width: 100px">Name</th>
+                <th style="width: 100px">Unit Price</th>
+                <th style="width: 100px">Quantity</th>
+                <th style="width: 100px">Cost</th>
+
+            </tr>
+            @foreach (var product in Model.ProductsDetail)
+            {
+                <tr>
+                    <td>@product.ProductID</td>
+                    <td>@product.Product.Name</td>
+                    <td>Rs. @product.Product.Price</td>
+                    <td>@product.Quantity</td>
+                    <td>Rs. @product.Cost</td>
+            </tr>
+            }
+
+        </table>
+        <hr />
+        
+    </div>
+</center>
+<br />
+<br />
+<br />
+<br />

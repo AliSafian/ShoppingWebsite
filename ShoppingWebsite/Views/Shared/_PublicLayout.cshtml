@@ -1,0 +1,164 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <script src="~/js/jquery-1.11.0.min.js"></script>
+    
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="~/js/simpleCart.min.js"> </script>
+    <link href="~/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="~/js/memenu.js"></script>
+    <script>$(document).ready(function () { $(".memenu").memenu(); });</script>
+    <script src="~/js/jquery.easydropdown.js"></script>	
+    <link rel="shortcut icon" href="~/Images/logo.png" />		
+    <title> @ViewBag.Title</title>
+    @RenderSection("scripts", false)
+    
+</head>
+<body>
+
+    <div> 
+
+        <div class="top-header">
+            <div class="container">
+                <div class="top-header-main">
+                    <div class="col-md-6 top-header-left">
+                        <div style="color:white;"><h1>Khareedo.pk</h1></div>
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 top-header-left">
+                    <div class="cart box_1">
+                        <a href="~/Checkout/Index">
+                            <div class="total">
+                                @if (Session["total"] != null)
+                                {
+                                    Double total = (Double)Session["total"];
+                                    <span>Rs. @total</span>
+                                }
+
+                            </div>
+                            <img src="~/images/cart-1.png" alt="" />
+                        </a>
+                        <p><a href="~/Checkout/Empty" class="simpleCart_empty">Empty Cart</a></p>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <div class="container">
+                <div class="header">
+                    <div class="col-md-8 header-left">
+                        <div class="top-nav">
+                            <ul class="memenu skyblue">
+                             
+                                @if (ViewBag.ActiveCategory == 1)
+                                {
+                                    <li class="grid"><a href="~/Home/Index">Home</a></li>
+                                    <li class="active"><a href="~/Product/GetProduct/1">Watches</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/2">Glasses</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/3">Shirts</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/4">Pents</a></li>
+                                }
+                                else if (ViewBag.ActiveCategory == 2)
+                                {
+                                    <li class="grid"><a href="~/Home/Index">Home</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/1">Watches</a></li>
+                                    <li class="active"><a href="~/Product/GetProduct/2">Glasses</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/3">Shirts</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/4">Pents</a></li>
+                                }
+                                else if (ViewBag.ActiveCategory == 3)
+                                {
+                                    <li class="grid"><a href="~/Home/Index">Home</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/1">Watches</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/2">Glasses</a></li>
+                                    <li class="active"><a href="~/Product/GetProduct/3">Shirts</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/4">Pents</a></li>
+                                }
+                                else if (ViewBag.ActiveCategory == 4)
+                                {
+                                    <li class="grid"><a href="~/Home/Index">Home</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/1">Watches</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/2">Glasses</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/3">Shirts</a></li>
+                                    <li class="active"><a href="~/Product/GetProduct/4">Pents</a></li>
+                                }
+                                else
+                                {
+                                    <li class="active"><a href="~/Home/Index">Home</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/1">Watches</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/2">Glasses</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/3">Shirts</a></li>
+                                    <li class="grid"><a href="~/Product/GetProduct/4">Pents</a></li>
+                                }
+
+
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="col-md-3 header-right">
+                        <div class="search-bar">
+                            <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                            <input type="submit" value="">
+                        </div>
+
+                    </div>
+                    @if (Session["user"]== null)
+                    {
+                        
+                        <div class="col-md-1 header-right"><a href="~/Account/Login"><h4>Login</h4></a></div>
+                    }
+                    else
+                    {
+                        var user = (DAL.Userss)Session["user"];
+                        if(user.UserType ==1)
+                        {
+                            <div class="col-md-1 header-right"><a href="~/Product/Index"><h4>@user.FirstName</h4></a></div>
+                        }
+                        else
+                        {
+                             <div class="col-md-1 header-right"><a href="~/Account/Logout"><h4>@user.FirstName</h4></a></div>
+                        }
+                       
+                    }
+                    
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+        <!--bottom-header-->
+        @RenderBody()
+    </div>
+
+    <div class="footer" style="background-color: slategray ; color:white">
+        <div class="container">
+            <div class="footer-top">
+                <div class="col-md-6 footer-left">
+                    <h3>Ali Safian</h3>
+                    <p>© 2017 Khareedo.pk. All Rights Reserved</p>
+                </div>
+                <div class="col-md-6 footer-right">
+                    <h5>Email:bsef14a033@pucit.edu.pk</h5>
+                    <h5>0348-7575557</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

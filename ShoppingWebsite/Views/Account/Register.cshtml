@@ -1,0 +1,63 @@
+﻿@model ShoppingWebsite.Models.UserModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_PublicLayout.cshtml";
+}
+<!--register-starts-->
+<div class="register">
+    <div class="container">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken();
+            <div class="register-top heading">
+                <h2>REGISTER</h2>
+            </div>
+           
+            <div class="register-main">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col-md-6 account-left">
+                    <input type="hidden" value="@Model.UserID" />
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                    <input placeholder="First name" type="text" tabindex="2" id="FirstName" name="FirstName" value="@Model.FirstName" required><br/>
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+
+                    <input placeholder="Last name" type="text" tabindex="2" id="LastName"  name="LastName" value="@Model.LastName" required><br />
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    <input placeholder="Email address" type="text" tabindex="3" id="Email" name="Email" value="@Model.Email" required><br />
+                    @Html.ValidationMessageFor(m => m.Mobile, "", new { @class = "text-danger" })
+                    <input placeholder="Mobile" type="text" tabindex="3" id="Mobile" name="Mobile" value="@Model.Mobile" required><br />
+                  
+                    <ul>
+                        <li><label class="radio left"><input type="radio" id="Gender" name="Gender" value="Male" checked=""><i></i>Male</label></li>
+                        <li><label class="radio"><input type="radio" id="Gender" name="Gender" value="Female"><i></i>Female</label></li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="col-md-6 account-left">
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+
+                    <input placeholder="Password" type="password" tabindex="4" id="Password" name="Password" value="@Model.Password" required><br/>
+                  
+                   
+                    @Html.ValidationMessageFor(m => m.Address1, "", new { @class = "text-danger" })
+                    <input placeholder="Address 1" type="text" tabindex="4" id="Address1" name="Address1" value="@Model.Address1" required>
+                  
+                    <input placeholder="Address 2" type="text" tabindex="4" id="Address2" name="Address2" value="@Model.Address2">
+                   
+                    <br/> @Html.Label("Picture")
+                    
+                    <input  type="file" name="image" value="image" />
+                    <input type="hidden" name="PictureName" value="@Model.PictureName"/>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="address submit">
+                <input type="submit" value="Submit">
+            </div>
+            
+        }
+    </div>
+</div>
+
+<!--register-end-->
